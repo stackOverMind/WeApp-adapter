@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -60,8 +60,8 @@
 	  WebSocket: _WebSocket2.default
 	};
 
-	window = !!window ? window : {};
-	window.WebSocket = _WebSocket2.default;
+	global.WebSocket = _WebSocket2.default;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 1 */
