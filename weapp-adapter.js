@@ -60,6 +60,9 @@
 	  WebSocket: _WebSocket2.default
 	};
 
+	window = !!window ? window : {};
+	window.WebSocket = _WebSocket2.default;
+
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
