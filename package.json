@@ -1,0 +1,32 @@
+{
+  "name": "weapp-adapter",
+  "version": "1.0.0",
+  "description": "微信小程序adapter",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stackOverMind/WeApp-adapter.git"
+  },
+  "keywords": [
+    "微信小程序",
+    "adapter",
+    "shim"
+  ],
+  "author": "Jack X",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stackOverMind/WeApp-adapter/issues"
+  },
+  "homepage": "https://github.com/stackOverMind/WeApp-adapter#readme",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0"
+  },
+  "dependencies": {
+    "event-target": "^0.1.0"
+  }
+}
