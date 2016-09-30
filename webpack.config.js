@@ -2,10 +2,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'weapp-adapter.js',
-    path: './'
-  },
-  externals: {
-    global: glob()
+    path: './',
+    libraryTarget: "var",
   },
   module: {
     loaders: [
@@ -20,7 +18,3 @@ module.exports = {
     ]
   }
 };
-
-function glob() {
-  return 'wx';
-}

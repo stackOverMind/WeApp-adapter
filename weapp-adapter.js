@@ -44,24 +44,23 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _WebSocket = __webpack_require__(1);
+	var _WebSocket2 = __webpack_require__(1);
 
-	var _WebSocket2 = _interopRequireDefault(_WebSocket);
+	var _WebSocket3 = _interopRequireDefault(_WebSocket2);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
-	  WebSocket: _WebSocket2.default
+	  WebSocket: _WebSocket3.default
 	};
 
-	global.WebSocket = _WebSocket2.default;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+	var WebSocket = _WebSocket3.default;
 
 /***/ },
 /* 1 */
@@ -135,8 +134,8 @@
 	      }
 	      /* webmessage https://www.w3.org/TR/2010/WD-webmessaging-20101118/  */
 	      var event = { 'type': 'message', 'data': data }; //TODO origin ...
-	      if (_this.ondata) {
-	        _this.ondata.call(_this, event);
+	      if (_this.onmessage) {
+	        _this.onmessage.call(_this, event);
 	      }
 	      _get(WebSocket.prototype.__proto__ || Object.getPrototypeOf(WebSocket.prototype), 'dispatchEvent', _this).call(_this, event);
 	    });

@@ -50,8 +50,8 @@ class WebSocket extends EventTarget {
       }
       /* webmessage https://www.w3.org/TR/2010/WD-webmessaging-20101118/  */
       var event = { 'type': 'message', 'data': data }//TODO origin ...
-      if (this.ondata) {
-        this.ondata.call(this, event)
+      if (this.onmessage) {
+        this.onmessage.call(this, event)
       }
       super.dispatchEvent(event)
     })
@@ -75,6 +75,3 @@ WebSocket.OPEN = 1;
 WebSocket.CLOSING = 2;
 WebSocket.CLOSED = 3;
 WebSocket.instance = null;
-
-
-

@@ -1,6 +1,5 @@
-import WebSocket from './WebSocket'
+import _WebSocket from './WebSocket'
 export default {
-  WebSocket
+  WebSocket:_WebSocket
 }
-window = !!window ? window : {}
-window.WebSocket = WebSocket
+var WebSocket = _WebSocket
