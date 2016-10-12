@@ -1,6 +1,5 @@
 import _WebSocket from './WebSocket'
-export default {
+module.exports = {
   WebSocket:_WebSocket
 }
-if(global)
-global.WebSocket = _WebSocket
+
