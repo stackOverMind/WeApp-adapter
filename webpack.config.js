@@ -3,8 +3,7 @@ module.exports = {
   output: {
     filename: 'weapp-adapter.js',
     path: './',
-    libraryTarget: "var",
-    library: 'wx'
+    libraryTarget: "commonjs2",
   },
   module: {
     loaders: [
