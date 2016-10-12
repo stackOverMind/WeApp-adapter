@@ -1,4 +1,4 @@
-import _WebSocket from './WebSocket'
+var _WebSocket = require('./WebSocket.js')
 module.exports = {
   WebSocket:_WebSocket
 }

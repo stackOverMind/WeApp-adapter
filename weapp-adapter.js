@@ -47,14 +47,9 @@ module.exports =
 
 	'use strict';
 
-	var _WebSocket2 = __webpack_require__(1);
-
-	var _WebSocket3 = _interopRequireDefault(_WebSocket2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	var _WebSocket = __webpack_require__(1);
 	module.exports = {
-	  WebSocket: _WebSocket3.default
+	  WebSocket: _WebSocket
 	};
 
 /***/ },
@@ -164,6 +159,7 @@ module.exports =
 	WebSocket.CLOSING = 2;
 	WebSocket.CLOSED = 3;
 	WebSocket.instance = null;
+	module.exports = WebSocket;
 
 /***/ },
 /* 2 */
