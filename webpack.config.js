@@ -4,6 +4,7 @@ module.exports = {
     filename: 'weapp-adapter.js',
     path: './',
     libraryTarget: "var",
+    library: 'wx'
   },
   module: {
     loaders: [
