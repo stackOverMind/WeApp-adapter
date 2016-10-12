@@ -3,9 +3,8 @@
  */
 const EventTarget = require('event-target');
 const URL = require('url');
-class WebSocket extends EventTarget {
+class WebSocket{
   constructor(url) {
-    super()
     if (url == null) {
       throw new TypeError('1 argument needed')
     }
@@ -73,6 +72,10 @@ class WebSocket extends EventTarget {
     wx.sendSocketMessage(data)
   }
 }
+WebSocket.prototype.addEventListener = EventTarget.addEventListener
+WebSocket.prototype.removeEventListener = EventTarget.removeEventListener
+WebSocket.prototype.dispatchEvent = EventTarget.dispatchEvent
+
 WebSocket.CONNECTING = 0;
 WebSocket.OPEN = 1;
 WebSocket.CLOSING = 2;

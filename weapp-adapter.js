@@ -75,29 +75,26 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 	/**
-	 * 参考 https://www.w3.org/TR/2011/WD-websockets-20110419/
+	 *  https://www.w3.org/TR/2011/WD-websockets-20110419/
 	 */
 	var EventTarget = __webpack_require__(2);
 	var URL = __webpack_require__(3);
 
-	var WebSocket = function (_EventTarget) {
-	  _inherits(WebSocket, _EventTarget);
-
+	var WebSocket = function () {
 	  function WebSocket(url) {
-	    _classCallCheck(this, WebSocket);
+	    var _this = this;
 
-	    var _this = _possibleConstructorReturn(this, (WebSocket.__proto__ || Object.getPrototypeOf(WebSocket)).call(this));
+	    _classCallCheck(this, WebSocket);
 
 	    if (url == null) {
 	      throw new TypeError('1 argument needed');
 	    }
 	    try {
-	      URL.parse(url);
+	      var parsed = URL.parse(url);
+	      if (parsed.protocol != 'https') {
+	        throw new Error('protocol must be https');
+	      }
 	    } catch (e) {
 	      throw new SyntaxError('url in wron format');
 	    }
@@ -105,13 +102,13 @@
 	    if (WebSocket.instance != null) {
 	      WebSocket.instance.close(); //安全的关闭
 	    }
-	    WebSocket.instance = _this;
-	    _this.url = url;
-	    _this.readyState = 0;
-	    _this.onopen = null;
-	    _this.onclose = null;
-	    _this.onerror = null;
-	    _this.onmessage = null;
+	    WebSocket.instance = this;
+	    this.url = url;
+	    this.readyState = 0;
+	    this.onopen = null;
+	    this.onclose = null;
+	    this.onerror = null;
+	    this.onmessage = null;
 	    wx.connectSocket({
 	      url: url });
 	    wx.onSocketOpen(function () {
@@ -147,7 +144,6 @@
 	        _this.onclose.call(_this, event);
 	      }
 	    });
-	    return _this;
 	  }
 
 	  _createClass(WebSocket, [{
@@ -163,7 +159,11 @@
 	  }]);
 
 	  return WebSocket;
-	}(EventTarget);
+	}();
+
+	WebSocket.prototype.addEventListener = EventTarget.addEventListener;
+	WebSocket.prototype.removeEventListener = EventTarget.removeEventListener;
+	WebSocket.prototype.dispatchEvent = EventTarget.dispatchEvent;
 
 	WebSocket.CONNECTING = 0;
 	WebSocket.OPEN = 1;
