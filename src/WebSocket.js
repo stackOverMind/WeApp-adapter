@@ -10,12 +10,12 @@ class WebSocket{
     }
     try {
       var parsed = URL.parse(url);
-      if(parsed.protocol != 'https'){
-        throw new Error('protocol must be https')
+      if(parsed.protocol != 'wss:'){
+        throw new Error('protocol must be wss')
       }
     }
     catch (e) {
-      throw new SyntaxError('url in wron format')
+      throw new SyntaxError('url in wrong format,protocol must be wss')
     }
     //根据微信小程序API介绍 websocket是单例的
     if (WebSocket.instance != null) {
