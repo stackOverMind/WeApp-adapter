@@ -60,8 +60,6 @@ module.exports =
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	/**
@@ -105,14 +103,14 @@ module.exports =
 	      if (_this.onopen) {
 	        _this.onopen.call(_this);
 	      }
-	      _get(WebSocket.prototype.__proto__ || Object.getPrototypeOf(WebSocket.prototype), 'dispatchEvent', _this).call(_this, { 'type': 'open' });
+	      _this.dispatchEvent({ 'type': 'open' });
 	    });
 	    wx.onSocketError(function (e) {
 	      var event = { 'type': 'error', 'data': e };
 	      if (_this.onerror) {
 	        _this.onerror.call(_this, event);
 	      }
-	      _get(WebSocket.prototype.__proto__ || Object.getPrototypeOf(WebSocket.prototype), 'dispatchEvent', _this).call(_this, event);
+	      _this.dispatchEvent(event);
 	    });
 	    wx.onSocketMessage(function (data) {
 
@@ -124,7 +122,7 @@ module.exports =
 	      if (_this.onmessage) {
 	        _this.onmessage.call(_this, event);
 	      }
-	      _get(WebSocket.prototype.__proto__ || Object.getPrototypeOf(WebSocket.prototype), 'dispatchEvent', _this).call(_this, event);
+	      _this.dispatchEvent(event);
 	    });
 	    wx.onSocketClose(function () {
 	      _this.readyState = WebSocket.CLOSED;

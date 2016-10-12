@@ -36,14 +36,14 @@ class WebSocket{
       if (this.onopen) {
         this.onopen.call(this)
       }
-      super.dispatchEvent({ 'type': 'open' })
+      this.dispatchEvent({ 'type': 'open' })
     })
     wx.onSocketError((e) => {
       var event = { 'type': 'error', 'data': e }
       if (this.onerror) {
         this.onerror.call(this, event)
       }
-      super.dispatchEvent(event)
+      this.dispatchEvent(event)
     })
     wx.onSocketMessage((data) => {
 
@@ -55,7 +55,7 @@ class WebSocket{
       if (this.onmessage) {
         this.onmessage.call(this, event)
       }
-      super.dispatchEvent(event)
+      this.dispatchEvent(event)
     })
     wx.onSocketClose(() => {
       this.readyState = WebSocket.CLOSED
