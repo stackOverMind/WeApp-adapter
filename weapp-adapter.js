@@ -118,7 +118,7 @@ module.exports =
 	        return;
 	      }
 	      /* webmessage https://www.w3.org/TR/2010/WD-webmessaging-20101118/  */
-	      var event = { 'type': 'message', 'data': data }; //TODO origin ...
+	      var event = { 'type': 'message', 'data': data.data }; //TODO origin ...
 	      if (_this.onmessage) {
 	        _this.onmessage.call(_this, event);
 	      }
@@ -141,7 +141,7 @@ module.exports =
 	  }, {
 	    key: 'send',
 	    value: function send(data) {
-	      wx.sendSocketMessage(data);
+	      wx.sendSocketMessage({ data: data });
 	    }
 	  }]);
 

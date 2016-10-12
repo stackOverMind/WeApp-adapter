@@ -3,14 +3,14 @@
  */
 const EventTarget = require('event-target');
 const URL = require('url');
-class WebSocket{
+class WebSocket {
   constructor(url) {
     if (url == null) {
       throw new TypeError('1 argument needed')
     }
     try {
       var parsed = URL.parse(url);
-      if(parsed.protocol != 'wss:'){
+      if (parsed.protocol != 'wss:') {
         throw new Error('protocol must be wss')
       }
     }
@@ -51,7 +51,7 @@ class WebSocket{
         return
       }
       /* webmessage https://www.w3.org/TR/2010/WD-webmessaging-20101118/  */
-      var event = { 'type': 'message', 'data': data }//TODO origin ...
+      var event = { 'type': 'message', 'data': data.data }//TODO origin ...
       if (this.onmessage) {
         this.onmessage.call(this, event)
       }
@@ -69,7 +69,7 @@ class WebSocket{
     wx.closeSocket()
   }
   send(data) {
-    wx.sendSocketMessage(data)
+    wx.sendSocketMessage({ data: data })
   }
 }
 WebSocket.prototype.addEventListener = EventTarget.addEventListener
