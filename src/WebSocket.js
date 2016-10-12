@@ -1,5 +1,5 @@
 /**
- * 参考 https://www.w3.org/TR/2011/WD-websockets-20110419/
+ *  https://www.w3.org/TR/2011/WD-websockets-20110419/
  */
 const EventTarget = require('event-target');
 const URL = require('url');
@@ -10,7 +10,10 @@ class WebSocket extends EventTarget {
       throw new TypeError('1 argument needed')
     }
     try {
-      URL.parse(url);
+      var parsed = URL.parse(url);
+      if(parsed.protocol != 'https'){
+        throw new Error('protocol must be https')
+      }
     }
     catch (e) {
       throw new SyntaxError('url in wron format')
