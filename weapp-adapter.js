@@ -51,6 +51,10 @@ module.exports =
 	module.exports = {
 	  WebSocket: _WebSocket
 	};
+	if (navigator == null) {
+	  navigator = {};
+	  navigator.userAgent = 'WeApp';
+	}
 
 /***/ },
 /* 1 */
